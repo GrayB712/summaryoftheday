@@ -23,7 +23,7 @@
 
       function addComment(comment) {
         const repo = 'GrayB712/summaryoftheday';
-        const path = 'comments.txt';
+        const path = 'Comments.txt';
         const url = `https://api.github.com/repos/${repo}/contents/${path}`;
         const message = `Add comment ${new Date().toISOString()}`;
         const content = btoa(comment);
