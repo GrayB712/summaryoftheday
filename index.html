@@ -11,6 +11,7 @@
       <textarea id="comment" name="comment" rows="5" cols="50"></textarea><br>
       <button type="submit">Submit</button>
     </form>
+    <p id="error-message"></p>
     <script>
       const token = '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';
       const repo = 'GrayB712/summaryoftheday';
@@ -40,11 +41,24 @@
           return response.json();
         })
         .then(data => {
-          console.log(`Comment added to ${data.content.html_url}`);
+          const successMessage = `Comment added to ${data.content.html_url}`;
+          const errorMessage = '';
+          updateErrorMessage(successMessage, errorMessage);
         })
         .catch(error => {
-          console.error(error);
+          const successMessage = '';
+          const errorMessage = error.message;
+          updateErrorMessage(successMessage, errorMessage);
         });
+      }
+
+      function updateErrorMessage(successMessage, errorMessage) {
+        const errorMessageElement = document.querySelector('#error-message');
+        if (errorMessage) {
+          errorMessageElement.textContent = errorMessage;
+        } else {
+          errorMessageElement.textContent = successMessage;
+        }
       }
 
       const form = document.querySelector('form');
