@@ -4,11 +4,25 @@
     <title>User Comment Form</title>
   </head>
   <body>
-    <h1>User Comment Form</h1>
-    <form method="POST" action="save_comment.php">
-      <label for="comment">Leave a comment:</label><br>
-      <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
-      <input type="submit" value="Submit">
     </form>
+    <script>
+      $.ajax({
+        https://api.github.com/users/<username>/repos?access_token=<generated token> 
+  method: "PUT",
+  url: "https://api.github.com/repos/redemption23/trackerApp/contents/file.txt"
+  data: {
+    "message": "my commit message",
+    "committer": {
+      "name": "Matt",
+    },
+    "content": text,
+  }
+})
+  .done(function( msg ) {
+    console.log( "Data Saved: " + msg );
+  });
+console.log(text);
+    </script>
   </body>
+  
 </html>
