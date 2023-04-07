@@ -1,33 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>User Comment Form</title>
+    <meta charset="utf-8">
+    <title>Add Comment to GitHub</title>
   </head>
   <body>
-    <p id="p1">a</p>
-    <button id="testbutton" onclick="addComment"><button>
-    <script>
-                                     addComment(){
-                                       document.getElementByID('p1').innerHTML="b";
-      var uploadURL ="https://api.github.com/repos/GrayB712/summaryoftheday/Comments.html" + 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;
-
-console.log(uploadURL);
-
-$.ajax({
-  type: "POST",
-  url: uploadURL,
-  contentType: "application/json",
-  dataType: "json",
-  data: JSON.stringify({
-      "content": "aGVsbG8=",
-      "encoding": "utf-8"
-    })
-})
-  .done(function( data ) {
-    console.log( data );
-  });
-                         }
-    </script>
+    <h1>Add Comment to GitHub</h1>
+    <form>
+      <label for="comment">Enter your comment:</label><br>
+      <textarea id="comment" name="comment" rows="5" cols="50"></textarea><br>
+      <button type="submit">Submit</button>
+    </form>
+    <script src="app.js"></script>
   </body>
-  
 </html>
