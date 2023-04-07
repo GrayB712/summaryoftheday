@@ -4,24 +4,29 @@
     <title>User Comment Form</title>
   </head>
   <body>
-    </form>
+    <p id="p1">a</p>
+    <button id="testbutton" onclick="addComment"><button>
     <script>
-      $.ajax({
-        https://api.github.com/users/<username>/repos?access_token=<generated token> 
-  method: "PUT",
-  url: "https://api.github.com/repos/redemption23/trackerApp/contents/file.txt"
-  data: {
-    "message": "my commit message",
-    "committer": {
-      "name": "Matt",
-    },
-    "content": text,
-  }
+                                     addComment(){
+                                       document.getElementByID('p1').innerHTML="b";
+      var uploadURL ="https://api.github.com/repos/GrayB712/summaryoftheday/Comments.html" + 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;
+
+console.log(uploadURL);
+
+$.ajax({
+  type: "POST",
+  url: uploadURL,
+  contentType: "application/json",
+  dataType: "json",
+  data: JSON.stringify({
+      "content": "aGVsbG8=",
+      "encoding": "utf-8"
+    })
 })
-  .done(function( msg ) {
-    console.log( "Data Saved: " + msg );
+  .done(function( data ) {
+    console.log( data );
   });
-console.log(text);
+                         }
     </script>
   </body>
   
