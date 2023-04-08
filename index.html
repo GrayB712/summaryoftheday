@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<p style="font-family:Arial;color:green; font-size:20px" id="errors">
+</p>
 </head>
 <center>
 <body onload="dispKey()">
@@ -12,8 +14,6 @@
 
 </p>
 <button onclick="checkPassword()" style="background:darkblue; color:white; border-radius:10px; width:90px; height:40px">Submit</button>
-<p id="errors">
-</p>
 
 <script>
 
@@ -37,7 +37,10 @@ function getCookie(cname) {
 function dispKey() {
    //setCookie("key", "034jf", 5);
    const oldString = getCookie("key");
-   //document.getElementById("errors").innerHTML=oldString;
+   if(oldString != null)
+   {
+      document.getElementById("errors").innerHTML="Actually, nevermind. You are already signed in!";
+   }
 }
 
 function setCookie(cname, cvalue, exdays) {
