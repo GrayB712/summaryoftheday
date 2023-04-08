@@ -11,7 +11,7 @@
 <p>
 
 </p>
-<button onclick="checkPassword()" style="background:darkblue; color:white; border-radius:10px; width:180; height:80">Submit</button>
+<button onclick="checkPassword()" style="background:darkblue; color:white; border-radius:10px; width:500; height:160">Submit</button>
 <p id="errors">
 </p>
 
@@ -73,7 +73,7 @@ function setCookie(cname, cvalue, exdays) {
             }
         }
         if(isKey < 0) {
-        document.getElementById("passcode").style="width:300; height:40"
+        document.getElementById("passcode").style="width:600; height:80"
         document.getElementById("passcode").placeholder="Wrong code!";
         document.getElementById("passcode").innerHTML="";
         document.getElementById("passcode").value="";
@@ -85,7 +85,6 @@ function setCookie(cname, cvalue, exdays) {
 
     </script>
 <p id="success" style="color:green"></p>
-<button id="btn" style="color:none; background:none; border:none; width:0; height:0"></button>
 </body>
 </center>
 </html>
