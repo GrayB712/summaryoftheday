@@ -37,7 +37,7 @@ function getCookie(cname) {
 function dispKey() {
    //setCookie("key", "034jf", 5);
    const oldString = getCookie("key");
-   document.getElementById("errors").innerHTML=oldString;
+   //document.getElementById("errors").innerHTML=oldString;
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -68,7 +68,7 @@ function setCookie(cname, cvalue, exdays) {
             //document.cookie = "key="+str;
             setCookie("key", str, 5);
             const newString = getCookie("key");
-            document.getElementById("errors").innerHTML=newString;
+            //document.getElementById("errors").innerHTML=newString;
             isKey = 1;            
             }
         }
