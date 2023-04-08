@@ -72,8 +72,7 @@ function setCookie(cname, cvalue, exdays) {
             isKey = 1;            
             }
         }
-        if(isKey < 0) {
-        document.getElementById("passcode").style="width:600; height:80"
+        if(isKey === 0) {
         document.getElementById("passcode").placeholder="Wrong code!";
         document.getElementById("passcode").innerHTML="";
         document.getElementById("passcode").value="";
