@@ -1,78 +1,92 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Add Comment to GitHub</title>
-  </head>
-  <body>
-    <h1>Add Comment to GitHub</h1>
-    <form>
-      <label for="comment">Enter your comment:</label><br>
-      <textarea id="comment" name="comment" rows="5" cols="50"></textarea><br>
-      <button type="submit">Submit</button>
-    </form>
-    <p id="error-message"></p>
-    <script>
-      let token = '';
+<center>
+<head>
+</head>
+<body onload="dispKey()">
 
-      function getToken() {
-        token = prompt('Enter your personal access token:');
-      }
+<input id="passcode" style="width:300; height:40" placeholder="Paste your sign in code here"></input>
 
-      getToken();
+<p id="p1" style="color:green"></p>
+<p>
 
-      function addComment(comment) {
-        const repo = 'GrayB712/summaryoftheday';
-        const path = `${new Date().toISOString()}`;
-        const url = `https://api.github.com/repos/${repo}/contents/${path}.git`;
-        const message = `Add comment ${new Date().toISOString()}`;
-        const content = btoa(comment);
+</p>
+<button onclick="checkPassword()" style="background:darkblue; color:white; border-radius:5px; width:90; height:40">Submit</button>
+<p id="errors">
+</p>
+<a style="color:green; font-size:25; font:Arial" id="search_link" href="https://sites.google.com/trojans.oklahomabible.com/fu8io3ry98732yigew32u/add-a-post"></a> 
 
-        fetch(url, {
-          method: 'PUT',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-            Accept: 'application/vnd.github.v3+json'
-          },
-          body: JSON.stringify({
-            message: message,
-            content: content
-          })
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(response.statusText);
-          }
-          return response.json();
-        })
-        .then(data => {
-          const successMessage = `Comment added to ${data.content.html_url}`;
-          const errorMessage = '';
-          updateErrorMessage(successMessage, errorMessage);
-        })
-        .catch(error => {
-          const successMessage = '';
-          const errorMessage = error.message;
-          updateErrorMessage(successMessage, errorMessage);
-        });
-      }
+<script>
 
-      function updateErrorMessage(successMessage, errorMessage) {
-        const errorMessageElement = document.querySelector('#error-message');
-        if (errorMessage) {
-          errorMessageElement.textContent = errorMessage;
-        } else {
-          errorMessageElement.textContent = successMessage;
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function dispKey() {
+   //setCookie("key", "034jf", 5);
+   const oldString = getCookie("key");
+   document.getElementById("errors").innerHTML=oldString;
+}
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+      const keys = ["jmKf5", "dWgd5"];
+
+      
+      function checkPassword(){
+        
+        var str = document.getElementById("passcode").value;
+        var lastCharfive = str.at(-5);
+        var lastCharfour = str.at(-4);
+        var lastCharthree = str.at(-3);
+        var lastChartwo = str.at(-2);
+        var lastCharone = str.at(-1);
+        var isKey = 0;
+        const lastChars = lastCharfive + lastCharfour + lastCharthree + lastChartwo + lastCharone;
+        //document.getElementById("p1").innerHTML = lastChars;
+        for (let i = 0; i < (keys.length + 1); i++) {
+          if(keys[i] === lastChars){
+            
+            document.getElementById("p1").innerHTML = "Success! You can now add posts!";
+            //document.cookie = `key=${str}`;
+            //document.cookie = "key="+str;
+            setCookie("key", str, 5);
+            const newString = getCookie("key");
+            document.getElementById("errors").innerHTML=newString;
+            isKey = 1;            
+            }
         }
-      }
+        if(isKey < 0) {
+        document.getElementById("passcode").style="width:300; height:40"
+        document.getElementById("passcode").placeholder="Wrong code!";
+        document.getElementById("passcode").innerHTML="";
+        document.getElementById("passcode").value="";
+        }
 
-      const form = document.querySelector('form');
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        const comment = document.querySelector('#comment').value;
-        addComment(comment);
-      });
+
+}
+
+
     </script>
-  </body>
+<p id="success" style="color:green"></p>
+<button id="btn" style="color:none; background:none; border:none; width:0; height:0"></button>
+</body>
+</center>
 </html>
